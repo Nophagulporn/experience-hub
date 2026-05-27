@@ -28,8 +28,6 @@ export function EventCard({ event, onClick }: EventCardProps) {
       className="
         overflow-hidden
         rounded-[28px]
-        border
-        border-gray-200
         bg-white
         cursor-pointer
         hover:shadow-lg

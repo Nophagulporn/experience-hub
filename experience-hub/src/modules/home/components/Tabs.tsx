@@ -8,7 +8,7 @@ type TabsProps = {
 
 export function Tabs({ tabs, activeTab = 0, onChange }: TabsProps) {
   return (
-    <XStack className="gap-4 border-b border-gray-200">
+    <XStack className="gap-4">
       {tabs.map((tab, index) => (
         <button
           key={tab}

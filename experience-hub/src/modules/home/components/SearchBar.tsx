@@ -22,8 +22,6 @@ export function SearchBar({
           px-4
           py-2
           rounded-lg
-          border
-          border-gray-200
           bg-white
           text-sm
         "
@@ -35,8 +33,6 @@ export function SearchBar({
           py-2
           rounded-lg
           bg-white
-          border
-          border-gray-200
           text-sm
           font-medium
           hover:bg-gray-50

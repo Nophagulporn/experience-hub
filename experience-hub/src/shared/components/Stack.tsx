@@ -80,8 +80,6 @@ export function XStack({
         box &&
           `
           rounded-[20px]
-          border
-          border-gray-200
           bg-white
           p-4
           md:p-6

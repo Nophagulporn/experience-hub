@@ -9,6 +9,7 @@ import { EventGrid } from "../components/EventGrid";
 import { Pagination } from "../components/Pagination";
 import { HeroBanner } from "../components/HeroBanner";
 import type { EventCardType } from "../components/EventCard";
+import bannerImage from "@/assets/banner/bannerHome.svg";
 
 const TABS = ["All", "Bookmarked", "Registered", "History"];
 const ITEMS_PER_PAGE = 10;
@@ -64,14 +65,14 @@ export default function HomeView() {
   };
 
   return (
-    <XStack className="min-h-screen w-full bg-[#F5F8FC]">
+    <XStack className="min-h-screen w-full bg-[#DFECFA] p-4">
       {/* SIDEBAR */}
       <Sidebar />
 
       {/* CONTENT */}
       <YStack className="flex-1 p-4 md:p-8 lg:p-12 gap-6">
         {/* HERO BANNER */}
-        <HeroBanner />
+        <HeroBanner image={bannerImage} />
 
         {/* SEARCH & FILTERS */}
         <YStack className="gap-4">
