@@ -1,5 +1,5 @@
 import { cn } from "@/shared/utils/cn";
-import { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 type StackProps = {
   children: ReactNode;

@@ -1,7 +1,7 @@
 // src/shared/components/Text.tsx
 
 import { cn } from "@/shared/utils/cn";
-import { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 type TextVariant =
   | "xlarge"
