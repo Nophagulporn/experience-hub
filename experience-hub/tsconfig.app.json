@@ -8,23 +8,24 @@
     "lib": ["ES2023", "DOM"],
 
     "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+
+    "jsx": "react-jsx",
+
     "types": ["vite/client"],
 
-    "skipLibCheck": true,
-
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
 
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
 
+    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
