@@ -36,6 +36,7 @@ export default function HomeView() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Filter events based on search term
   const filteredEvents = MOCK_EVENTS.filter((event) =>
@@ -66,11 +67,44 @@ export default function HomeView() {
 
   return (
     <XStack className="min-h-screen w-full bg-[#DFECFA] p-4">
-      {/* SIDEBAR */}
-      <Sidebar />
+      {/* SIDEBAR — hidden on mobile/tablet */}
+      <div className="hidden lg:block">
+        <Sidebar />
+      </div>
+
+      {/* HAMBURGER — fixed top-left on mobile/tablet */}
+      <button
+        className="fixed top-4 left-4 z-40 lg:hidden p-2 rounded-xl bg-white border border-gray-200 shadow-sm"
+        onClick={() => setIsMobileMenuOpen(true)}
+      >
+        <span className="flex flex-col gap-1">
+          <span className="block w-5 h-0.5 bg-gray-600" />
+          <span className="block w-5 h-0.5 bg-gray-600" />
+          <span className="block w-5 h-0.5 bg-gray-600" />
+        </span>
+      </button>
+
+      {/* MOBILE DRAWER */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* White fade backdrop — non-interactive */}
+          <div className="absolute inset-0 bg-white/60 pointer-events-none" />
+          {/* Drawer panel */}
+          <div className="absolute left-4 top-4 bottom-4 z-10">
+            {/* Close button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute -right-3 -top-3 z-20 h-7 w-7 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-500 text-xs hover:text-gray-800"
+            >
+              ✕
+            </button>
+            <Sidebar />
+          </div>
+        </div>
+      )}
 
       {/* CONTENT */}
-      <YStack className="flex-1 p-4 md:p-8 lg:p-12 gap-6">
+      <YStack className="flex-1 pt-14 lg:pt-0 p-4 md:p-8 lg:p-12 gap-6">
         {/* HERO BANNER */}
         <HeroBanner image={bannerImage} />
 

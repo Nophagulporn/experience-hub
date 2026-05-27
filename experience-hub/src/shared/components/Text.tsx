@@ -1,5 +1,3 @@
-// src/shared/components/Text.tsx
-
 import { cn } from "@/shared/utils/cn";
 import type { ReactNode } from 'react';
 
