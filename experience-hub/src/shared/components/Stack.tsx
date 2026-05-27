@@ -1,5 +1,7 @@
 import { cn } from "@/shared/utils/cn";
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
+
+type ResponsiveValue = "row" | "col" | "row-reverse" | "col-reverse";
 
 type StackProps = {
   children: ReactNode;
@@ -9,25 +11,84 @@ type StackProps = {
   spaceBetween?: boolean;
   content?: boolean;
   box?: boolean;
+
+  direction?: ResponsiveValue;
+
+  mobileDirection?: ResponsiveValue;
+  tabletDirection?: ResponsiveValue;
+  desktopDirection?: ResponsiveValue;
+
+  gap?: number;
+};
+
+const directionMap = {
+  row: "flex-row",
+  col: "flex-col",
+  "row-reverse": "flex-row-reverse",
+  "col-reverse": "flex-col-reverse",
 };
 
 export function XStack({
   children,
   className,
+
   center,
   spaceBetween,
   content,
+  box,
+
+  direction = "row",
+
+  mobileDirection,
+  tabletDirection,
+  desktopDirection,
+
+  gap,
 }: StackProps) {
   return (
     <div
       className={cn(
-        "flex flex-row flex-wrap whitespace-pre-line",
+        // BASE
+        "flex",
 
+        // DIRECTION
+        directionMap[direction],
+
+        mobileDirection && directionMap[mobileDirection],
+
+        tabletDirection && `md:${directionMap[tabletDirection]}`,
+
+        desktopDirection && `lg:${directionMap[desktopDirection]}`,
+
+        // ALIGNMENT
         center && "items-center justify-center",
 
         spaceBetween && "justify-between",
 
-        content && "w-full max-w-[1300px]",
+        // RESPONSIVE CONTAINER
+        content &&
+          `
+          w-full
+          max-w-screen-2xl
+          mx-auto
+          px-4
+          md:px-6
+          lg:px-8
+        `,
+
+        // BOX
+        box &&
+          `
+          rounded-[20px]
+          border
+          border-gray-200
+          bg-white
+          p-4
+          md:p-6
+        `,
+
+        // GAP
+        gap && `gap-[${gap}px]`,
 
         className,
       )}
@@ -37,42 +98,10 @@ export function XStack({
   );
 }
 
-export function YStack({
-  children,
-  className,
-  center,
-  content,
-  box,
-}: StackProps) {
+export function YStack({ children, className, ...props }: StackProps) {
   return (
-    <div
-      className={cn(
-        "flex flex-col whitespace-pre-line",
-
-        center && "items-center justify-center",
-
-        content && "w-full max-w-[1300px]",
-
-        box &&
-          `
-          rounded-[20px]
-          border
-          border-transparent
-          border-t-[1px]
-          border-r-[1px]
-          border-b-0
-          border-l-0
-          p-[25px]
-          bg-white
-          bg-[linear-gradient(0deg,#FFFFFF,#FFFFFF),linear-gradient(256deg,rgba(12,97,224,0.5)_0.38%,rgba(12,97,224,0)_48.17%)]
-          bg-origin-border
-          bg-clip-padding
-        `,
-
-        className,
-      )}
-    >
+    <XStack direction="col" className={className} {...props}>
       {children}
-    </div>
+    </XStack>
   );
 }
