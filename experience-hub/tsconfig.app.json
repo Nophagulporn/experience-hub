@@ -1,46 +1,34 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
-    /* Language */
     "target": "ES2023",
     "lib": ["ES2023", "DOM"],
 
-    /* Module */
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-
-    /* React */
-    "jsx": "react-jsx",
-
-    /* Vite */
     "types": ["vite/client"],
 
-    /* Path Alias */
+    "skipLibCheck": true,
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
 
-    /* TS 6 Fix */
-    "ignoreDeprecations": "6.0",
-
-    /* Bundler */
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "moduleDetection": "force",
 
-    /* Strict */
-    "skipLibCheck": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Experimental */
-    "erasableSyntaxOnly": true
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
   },
 
   "include": ["src"]
